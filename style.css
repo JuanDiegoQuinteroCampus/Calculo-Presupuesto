@@ -1,3 +1,6 @@
+html , body{
+  font-size: 62,5%; 
+}
 body{
     margin: 0;
 }
@@ -5,8 +8,12 @@ body{
     background-repeat: no-repeat;
     background-image: url(img/68620047-fondo-de-madera-oscura-foto-tomada-de-una-superficie-y-editado-en-un-fondo-oscuro-y-sombrío-útil.jpg);
     background-size:cover;
-    height: 17rem;
+    height: 24rem;
 }
 .inputs{
     height: 70%;
+}
+
+.boton {
+    background-color: red;
 }
