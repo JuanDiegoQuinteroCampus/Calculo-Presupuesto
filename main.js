@@ -11,42 +11,46 @@ let select = [];
   let desc = [];
   let userInput = []; */
   /* let data = []; */
+
   let data = {
-      
-      ingresos:[],
-      egresos: [],
-      operaciones:[],
+    ingresos:[],
+    egresos: [],
   };
+  
+  let lastOperation = 0;
+  
+  let getData = () => {
 
-
-let getData =  () => {
-  desc = document.getElementById("desc").value;//esto n hace nada por ahora
- 
- 
-
-  let userInput = parseInt(document.getElementById("userInput").value) ;
-  let select = document.getElementById("selectOption");
-  if (select.value==='Ingresos') {
-    data.ingresos.push(userInput)
-    data.operaciones.push(userInput)
-    let suma = data.operaciones.reduce(function(total,num){
-      return total + num;
-    });
-    console.log(suma);
-    document.getElementById("outputText").innerHTML = suma.toLocaleString();
+    let userInput = parseInt(document.getElementById("userInput").value);
+    let select = document.getElementById("selectOption");
+    
+    if (select.value === 'Ingresos') {
+      data.ingresos.push(userInput)
+      lastOperation = userInput;
+      let suma = data.ingresos.reduce(function(total,num){
+        return total + num;
+      });
+      let resultado = suma - data.egresos.reduce(function(total,num){
+        return total + num;
+      }, 0);
+      console.log(resultado);
+      document.getElementById("outputText").innerHTML = resultado.toLocaleString();
+    }
+    if (select.value === 'Egresos') {
+      data.egresos.push(userInput)
+      lastOperation = -userInput;
+      let resta = data.egresos.reduce(function(total,num){
+        return total + num;
+      });
+      let resultado = data.ingresos.reduce(function(total,num){
+        return total + num;
+      }, 0) - resta;
+      console.log(resultado);
+      document.getElementById("outputText").innerHTML = resultado.toLocaleString();
+    }
+    console.log(data);
   }
-  if (select.value==='Egresos'){
-    data.egresos.push(userInput)
-    data.operaciones.push(userInput)
-    let resta = data.operaciones.reduce(function(total,num){
-      return total - num;
-    });
-    console.log(resta);
-    document.getElementById("outputText").innerHTML = resta.toLocaleString();
-  }
-  console.log(data);
-
-}
+  
 
 
 
