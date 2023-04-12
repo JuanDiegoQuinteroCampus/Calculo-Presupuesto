@@ -1,7 +1,10 @@
-/* import mydatos from "./components/datos.js"; */
+/* import myencabezado from "./components/myencabezado.js";
+import mycolectData from "./components/mycolectData.js";
+import mytable from "./components/mytable.js";
 
-/* mydatos. */
-/* import config from "./config.js"; */
+myencabezado.fragshow();
+mycolectData.fragshow();
+mytable.fragshow(); */
 
 
   let data = {
@@ -39,6 +42,10 @@
         return total + num;
       }, 0) - resta;
       console.log(resultado);
+      
+      let porcentaje = (Math.abs(data.egresos)*100)/data.ingresos
+      document.querySelector("#outporcent").innerHTML= porcentaje.toFixed()
+      console.log(porcentaje.toFixed(2));
       document.getElementById("outputText").innerHTML = resultado.toLocaleString();
       document.getElementById("outEgreso").innerHTML = resta.toLocaleString();
     }
